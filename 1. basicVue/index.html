@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <style>
+      .box {
+        padding: 150px 0;
+        width: 400px;
+        text-align: center;
+        background-color: #ddd;
+        margin: 20px;
+      }
+      .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello,Vue</h1>
+
+    <div id="contoh">
+      <div>
+        <h1>Contoh Template</h1>
+        <h2>Contoh buku {{ currentTitle }}</h2>
+        <button @click="changeTitle">Ganti Judul</button>
+
+        <br />
+        <hr />
+        <!-- v-show kaya menggunakan css display block display none etc -->
+        <div v-show="showNames">Currently Showing books</div>
+        <!-- v-if yg dibwh benar benar menghapus kode  kode ini tidak terlalu efektif karna akan memakan performance yg tinggi dibangind mengganti css-->
+        <div v-if="showNames">
+          <p v-for="name in names" :key="name">{{name}}</p>
+        </div>
+        <button @click="toggleShowNames">
+          <p v-if="showNames">button hide</p>
+          <p v-else="">button show</p>
+        </button>
+        <br />
+        <br />
+        <br />
+        <div>
+          <p>{{skor}}</p>
+          <button @click="increase">+</button>
+          <p>___________</p>
+          <button @click="decrease">-</button>
+          <button @click="skor = skor +1">Tambah Skor</button>
+          <button @click="skor = skor -1">Kurang Skor</button>
+        </div>
+
+        <br />
+        <br />
+        <hr />
+        <div class="container">
+          <div class="box" @mouseover="handleMouseOver">mouseover(enter)</div>
+          <div class="box" @mouseleave="handleMouseLeave">mouseleave</div>
+          <div class="box" @dblclick="handleDoubleClick">double click</div>
+          <div class="box" @mousemove="handleMouseMove">
+            position {{x}}- {{y}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
